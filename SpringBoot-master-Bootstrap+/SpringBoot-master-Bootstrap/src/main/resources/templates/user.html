@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Инфо о пользователе</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-11" align="left" style="background-color: black"><p class="text-secondary"><b
+                th:text="${user.email}"></b> <b th:text="${user.getRoles()}"></b></p></div>
+        <div class="col-md-1" align="center" style="background-color: black"><a href="/logout">Logout</a></p></div>
+        <!-- <p class="text-white bg-dark"> -->
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2" align="left"><p class="text-white bg-dark"><b th:text="${user.getRoles()}"></b></p></div>
+
+        <div class="col-md-10" align="center">
+            <table class="table table-hover table-bordered table-striped">
+
+                <thead>
+                <div align="left"><h2>User information page</h2></div>
+                </thead>
+
+                <tbody>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>
+                            <div align="left"><h5>About user</h5></div>
+                        </th>
+                    </tr>
+
+                    <!-- nachalo vlozennoy tablycy -->
+                    <td>
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <th>ID</th>
+                                <th>Login</th>
+                                <th>Password</th>
+                                <th>E-mail</th>
+                                <th>Role</th>
+                            </tr>
+                            <td><b th:text="${user.id}"></b></td>
+                            <td><b th:text="${user.login}"></b></td>
+                            <td><b th:text="${user.password}"></b></td>
+                            <td><b th:text="${user.email}"></b></td>
+                            <td><b th:text="${user.getRoles()}"></b></td>
+                        </table>
+                    </td>
+
+                </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript Bundle with Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+        crossorigin="anonymous"></script>
+</body>
+</html>

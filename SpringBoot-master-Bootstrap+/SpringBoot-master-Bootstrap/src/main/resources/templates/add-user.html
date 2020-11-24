@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+
+    <meta http-equiv="x-ua-compatible">
+    <title>Добавление пользователя</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-11" align="left" style="background-color: black"><p class="text-secondary">
+            <b th:text="${user.email}"></b>Infa o usere</p></div>
+        <div class="col-md-1" align="center" style="background-color: black"><a href="/logout">Logout</a></p></div>
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="d-grid gap-2">
+                <a class="btn btn-primary btn-sm btn-block" href="/admin" role="button">Admin</a>
+                <a class="btn btn-primary btn-sm btn-block" href="/signup" role="button">User</a>
+            </div>
+        </div>
+
+        <div class="col-md-10" align="center">
+            <table class="table table-hover table-bordered table-striped">
+
+                <thead>
+                <div align="left"><h2>Admin panel</h2></div>
+                </thead>
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin">User table</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/signup">Add user</a>
+                    </li>
+                </ul>
+
+                <tbody>
+
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>
+                            <div align="left"><h5>Add new user</h5></div>
+                        </th>
+                    </tr>
+                    <!-- nachalo vlozennoy tablycy -->
+                    <td>
+                        <table class="table table-bordered table-striped" align="center">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-4"></div>
+
+                                    <div class="col-sm-4">
+                                        <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+
+                                            <div style="text-align: center"><p><label for="login"><b>Login</b></label>
+                                            </p></div>
+                                            <p>
+                                                <input type="text" th:field="*{login}" class="form-control" id="login"
+                                                       placeholder="Login">
+                                                <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"
+                                                      class="text-danger"></span>
+                                            </p>
+
+                                            <div style="text-align: center"><p><label
+                                                    for="password"><b>Password</b></label></p></div>
+                                            <p>
+                                                <input type="text" th:field="*{password}" class="form-control"
+                                                       id="password"
+                                                       placeholder="Password">
+                                                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                                      class="text-danger"></span>
+                                            </p>
+
+                                            <div style="text-align: center"><p><label for="email"><b>Email</b></label>
+                                            </p></div>
+                                            <p><input type="text" th:field="*{email}" class="form-control" id="email"
+                                                      placeholder="Email">
+                                                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                                      class="text-danger"></span>
+                                            </p>
+
+                                            <p>
+                                            <div style="text-align: center"><b>Role</b></div>
+                                            <br>
+                                            <div class="form-floating" style="text-align:center">
+                                                <select th:name="role_id" class="form-select" id="floatingSelect"
+                                                        aria-label="Floating label select example">
+                                                    <option value="1">USER</option>
+                                                    <option value="2">ADMIN</option>
+                                                </select>
+                                                <label for="floatingSelect"> </label>
+                                            </div>
+                                            </p>
+
+                                            <p colspan="2" align="center">
+                                                <input type="submit" class="btn btn-success" value="Add new user">
+                                            </p>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </div>
+                        </table>
+                    </td>
+                </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- JavaScript Bundle with Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+        crossorigin="anonymous"></script>
+</body>
+</html>
