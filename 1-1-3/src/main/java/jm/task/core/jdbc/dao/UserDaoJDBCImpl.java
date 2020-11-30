@@ -27,8 +27,10 @@ public class UserDaoJDBCImpl implements UserDao {
                     "  PRIMARY KEY (`id`))\n");
             stm.close();
         } catch (SQLException e) {
+//            connection.rollback();
             logger.warning("Table has not created!\n" + e);
         }
+//        finally { connection.setAutoCommit(true);
     }
 
     public void dropUsersTable() {
